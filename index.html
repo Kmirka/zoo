@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MTB Extreme - Велострибки</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:url("https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=2000") center/cover fixed;
+    color:white;
+}
+
+.overlay{
+    background:rgba(0,0,0,0.75);
+}
+
+nav{
+    background:rgba(0,0,0,0.9);
+    position:sticky;
+    top:0;
+    z-index:1000;
+    padding:15px;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+nav li{
+    margin:10px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#66ff66;
+}
+
+header{
+    text-align:center;
+    padding:100px 20px;
+}
+
+header h1{
+    font-size:60px;
+}
+
+header p{
+    max-width:900px;
+    margin:auto;
+    margin-top:20px;
+    font-size:20px;
+}
+
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:50px 25px;
+}
+
+h2{
+    color:#7CFC00;
+    margin-bottom:20px;
+}
+
+.card{
+    background:rgba(0,0,0,.75);
+    padding:25px;
+    margin:20px 0;
+    border-radius:15px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.bikes{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+}
+
+button{
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    margin:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.search{
+    width:100%;
+    max-width:500px;
+    padding:12px;
+    border-radius:10px;
+    border:none;
+    margin-top:15px;
+}
+
+.counter{
+    font-size:40px;
+    color:#7CFC00;
+    margin-top:20px;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    background:rgba(0,0,0,.9);
+}
+
+.dark{
+    filter:brightness(.8);
+}
+
+</style>
+</head>
+<body>
+
+<div class="overlay">
+
+<nav>
+<ul>
+<li><a href="#about">Про MTB</a></li>
+<li><a href="#bikes">Велосипеди</a></li>
+<li><a href="#jumps">Стрибки</a></li>
+<li><a href="#safety">Безпека</a></li>
+<li><a href="#facts">Факти</a></li>
+</ul>
+</nav>
+
+<header>
+
+<h1>🚵 MTB EXTREME</h1>
+
+<p>
+Ласкаво просимо у світ екстремального велоспорту. Тут ти дізнаєшся
+про даунхіл, дірт-джампінг, трейли, великі стрибки, найкращі
+велосипеди та правила безпеки.
+</p>
+
+<input
+class="search"
+type="text"
+id="search"
+placeholder="Пошук велосипеда..."
+onkeyup="searchBike()">
+
+<br>
+
+<button onclick="toggleTheme()">
+🌙 Змінити тему
+</button>
+
+<button onclick="randomFact()">
+🎲 Цікавий факт
+</button>
+
+<p id="fact"></p>
+
+<div class="counter" id="timer">0</div>
+
+</header>
+
+<section id="about">
+
+<h2>Що таке MTB?</h2>
+
+<div class="card">
+
+<p>
+Mountain Bike або MTB — це гірський велосипед, створений для їзди
+по пересіченій місцевості. На відміну від звичайних велосипедів,
+MTB мають міцні рами, потужні гальма та підвіску.
+</p>
+
+<br>
+
+<p>
+Однією з найвидовищніших дисциплін є стрибки на велосипеді.
+Спортсмени виконують складні трюки на спеціальних трасах,
+злітаючи на кілька метрів над землею.
+</p>
+
+<br>
+
+<p>
+Сучасний MTB включає багато напрямків: Downhill, Dirt Jump,
+Slopestyle, Enduro, Freeride та Cross Country.
+Кожна дисципліна потребує особливого велосипеда та навичок.
+</p>
+
+</div>
+
+</section>
+
+<section id="bikes">
+
+<h2>Види велосипедів</h2>
+
+<div class="bikes">
+
+<div class="card bike">
+<h3>🚵 Dirt Jump Bike</h3>
+<p>
+Діртовий велосипед створений для стрибків на земляних трамплінах.
+Він має коротку раму, великі колеса та дуже міцну конструкцію.
+Такі велосипеди використовуються для виконання трюків у повітрі.
+</p>
+</div>
+
+<div class="card bike">
+<h3>⛰️ Downhill Bike</h3>
+<p>
+Даунхільний велосипед призначений для швидкісних спусків
+по гірських трасах. Має дві підвіски та великий хід амортизаторів.
+Може витримувати дуже великі навантаження.
+</p>
+</div>
+
+<div class="card bike">
+<h3>🔥 Slopestyle Bike</h3>
+<p>
+Спеціальний велосипед для складних трюків.
+Поєднує легкість та міцність.
+Використовується на міжнародних змаганнях.
+</p>
+</div>
+
+<div class="card bike">
+<h3>🌲 Enduro Bike</h3>
+<p>
+Підходить для тривалих поїздок лісом, підйомів та спусків.
+Вважається одним із найуніверсальніших MTB велосипедів.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="jumps">
+
+<h2>Популярні трюки</h2>
+
+<div class="card">
+<h3>Table Top</h3>
+<p>
+Один із найбезпечніших стрибків для навчання.
+Має пласку верхню частину.
+</p>
+</div>
+
+<div class="card">
+<h3>Gap Jump</h3>
+<p>
+Стрибок через великий розрив між трамплінами.
+Потребує високої точності.
+</p>
+</div>
+
+<div class="card">
+<h3>Drop</h3>
+<p>
+Стрибок з висоти без розгінного трампліна.
+Часто використовується на трейлах.
+</p>
+</div>
+
+<div class="card">
+<h3>Whip</h3>
+<p>
+Під час польоту велосипед повертається боком.
+Один із найкрасивіших трюків у MTB.
+</p>
+</div>
+
+</section>
+
+<section id="safety">
+
+<h2>Безпека</h2>
+
+<div class="card">
+
+<p>
+Безпека є найважливішою частиною екстремального велоспорту.
+Кожен спортсмен повинен використовувати якісний шолом,
+захист колін, ліктів та рукавички.
+</p>
+
+<br>
+
+<p>
+Перед катанням необхідно перевіряти гальма, тиск у колесах,
+амортизатори та кріплення керма.
+</p>
+
+<br>
+
+<p>
+Новачкам рекомендується починати з маленьких трамплінів
+і поступово переходити до складніших елементів.
+</p>
+
+</div>
+
+</section>
+
+<section id="facts">
+
+<h2>Цікаві факти</h2>
+
+<div class="card">
+
+<p>
+🏆 BMX Freestyle входить до програми Олімпійських ігор.
+</p>
+
+<p>
+🌍 Найбільші змагання зі Slopestyle проходять у Канаді.
+</p>
+
+<p>
+🚵 Деякі спортсмени виконують стрибки на висоті понад 10 метрів.
+</p>
+
+<p>
+🌲 Багато найкращих трас світу проходять через густі ліси.
+</p>
+
+</div>
+
+</section>
+
+<footer>
+
+<h3>🚵 MTB EXTREME 2026</h3>
+<p>Світ даунхілу, дірт-джампінгу та екстремальних пригод.</p>
+
+</footer>
+
+</div>
+
+<script>
+
+const facts=[
+"Даунхільні велосипеди можуть важити понад 15 кг.",
+"Перші MTB з'явилися у Каліфорнії.",
+"Стрибки на 10 метрів не є рідкістю для професіоналів.",
+"Slopestyle є однією з найскладніших дисциплін.",
+"Деякі трейли проходять через ліси довжиною понад 50 км."
+];
+
+let random=Math.floor(Math.random()*facts.length);
+
+document.getElementById("fact").innerHTML=
+facts[random];
+}
+
+function searchBike(){
+
+let input=
+document.getElementById("search").value.toLowerCase();
+
+let bikes=
+document.getElementsByClassName("bike");
+
+for(let i=0;i<bikes.length;i++){
+
+let text=
+bikes[i].innerText.toLowerCase();
+
+if(text.includes(input)){
+bikes[i].style.display="block";
+}else{
+bikes[i].style.display="none";
+}
+
+}
+}
+
+</script>
+
+</body>
+</html>
